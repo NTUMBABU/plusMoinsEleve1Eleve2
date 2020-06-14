@@ -34,9 +34,7 @@ void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 
 int main()
 {
-	int FACILE = 1;
-	int MOYEN = 2;
-	int DIFFICILE = 3;
+	
 
 	srand(time(NULL));
 	int nbr_secret = rand()%100;
