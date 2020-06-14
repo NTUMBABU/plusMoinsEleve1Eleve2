@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-
+// PRPJET FAIT PAR :
+//					 NTUMBABU TSHITEYA JOAS
+///////////////////////////////////////////////////////////////////////////////////
 void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 {
 	int i = 0;
@@ -32,8 +34,8 @@ void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 		i++;
 	}
 }
-
-void plus_moins_un_joueur()
+//////////////////////////////////////////////////////////////////////////////////
+void main_plus_moins_un_joueur()
 {
 	srand(time(NULL));
 	int nbr_secret = rand()%100;
@@ -71,51 +73,66 @@ void plus_moins_un_joueur()
 	printf("Deviner un nombre compris entre 0 et 100 : "); plus_moins(choix, nbr_secret, niveau_jeux);
 	printf("\n");
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
+{
+	int i = 0;
+	//int resultat = 0;
 
-void plus_moins_deux()
+	while(essaie != nbr_j_2 && i < nbr_j1)
+	{	
+		scanf("%d",&essaie);
+
+		if(essaie == nbr_j_2)
+		{
+			printf("\n\n+*+*++*+*+*+*+*++*+**+ BINGO *+***+*+*+*+*+*+*+*+++*\n");
+		}
+			
+		else if(essaie < nbr_j_2)
+		{
+			printf("PLUS\n");
+			printf("Essaie encore : ");
+		}
+
+		else if(essaie > nbr_j_2)
+		{
+			printf("MOINS\n");
+			printf("Essaie encore : ");
+		}
+		else
+		{
+			printf("\n DOmmage\n");
+		}
+		i++;
+		essaie++;
+	}
+	printf("res = %d \n",essaie);
+}
+void plus_moins_deux_joueur_2()
 {
 
 }
 
-void plus_moins_deux_joueur()
+/////////////////////////////////////////////////////////////////////////////////////////////////
+void main_plus_moins_deux_joueur()
 {
-	//srand(time(NULL));
-	//int nbr_secret = rand()%100;
 	int joueur_1 = 0;
 	int joueur_2= 0;
-	int nbr_secret;
-	int choix = 0;
-	//int niveau = 0;
-	int niveau_jeux = 0;
+	int joueur = 0;
+	int N = 0;
+	int essaie = 0;
 	
-	printf("\n============== BIEN VENNUE DANS LE MODE DEUX JOUEUR ==============\n\n");
+	printf("\n============== BIEN VENNUE DANS LE MODE DEUX JOUEUR ==============\n\n");	
 	
-	printf("INSERER LE NUMERO DU NIVEAU DE JEUX : "); scanf("%d",&niveau);
-		
-	switch(niveau)
-	{
-		case 1:
-			niveau_jeux = 100;
-			printf("\n\t vous avez choisi le niveau 1 \n\n");
-			break;
-
-		case 2:
-			niveau_jeux = 25;
-			printf("\n\t vous avez choisi le niveau 2 \n\n");
-			break;
-
-		case 3:
-			niveau_jeux = 10;
-			printf("\n\t vous avez choisi le niveau 3\n\n");
-			break;
-
-		default:
-			printf("\n\t Vous deviez choisir le niveau entre 1 et 3 \n\n");
-			break;
-	}
-	printf("Deviner un nombre compris entre 0 et 100 : ");
+	printf("JOUEUR 1 placer le nombre des coups minimum maximum pour JOUEUR 2 : \n"); scanf("%d",&joueur_1);
+	srand(time(NULL));
+	int nbr_min_max = rand()%100;
+	printf("Joueur 2 Deviner le nombre placer entre 0 et 100 en seulement %d essaie: ",joueur_1); plus_moins_deux_joueur_1(essaie, nbr_min_max, joueur_1);
+	printf("\n");
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
 	int choix_mode = 0;
@@ -147,11 +164,32 @@ int main()
 
 	if(choix_mode == 1)
 	{	
-		plus_moins_un_joueur();
+		main_plus_moins_un_joueur();
 	}
 	else
 	{
-		plus_moins_deux_joueur();
+		main_plus_moins_deux_joueur();
 	}
 	return 0;	
 }
+/*switch(niveau)
+	{
+		case 1:
+			niveau_jeux = 100;
+			printf("\n\t vous avez choisi le niveau 1 \n\n");
+			break;
+
+		case 2:
+			niveau_jeux = 25;
+			printf("\n\t vous avez choisi le niveau 2 \n\n");
+			break;
+
+		case 3:
+			niveau_jeux = 10;
+			printf("\n\t vous avez choisi le niveau 3\n\n");
+			break;
+
+		default:
+			printf("\n\t Vous deviez choisir le niveau entre 1 et 3 \n\n");
+			break;
+	}*/
