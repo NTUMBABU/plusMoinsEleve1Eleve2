@@ -7,7 +7,7 @@ void plus_moins(int choix_joueur, int valeur_a_touver)
 	int x = 0;
 	do
 	{	
-		scanf("%d",&choix_joueur);
+		printf("Essaie encore : "); scanf("%d",&choix_joueur);
 		if(choix_joueur == valeur_a_touver)
 		{
 			printf("BINGO\n");
