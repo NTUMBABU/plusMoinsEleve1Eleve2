@@ -19,13 +19,13 @@ void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 		else if(choix_joueur < valeur_a_touver)
 		{
 			printf("PLUS\n");
-			printf("Essaie encore : ");
+			printf("[ %d ] Essaie encore : ",i);
 		}
 
 		else if(choix_joueur > valeur_a_touver)
 		{
 			printf("MOINS\n");
-			printf("Essaie encore : ");
+			printf("[ %d ] Essaie encore : ",i);
 		}
 		else
 		{
@@ -78,7 +78,8 @@ void main_plus_moins_un_joueur()
 void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
 {
 	int i = 0;
-	//int resultat = 0;
+	int resultat = 0;
+	resultat = nbr_j1;
 
 	while(essaie != nbr_j_2 && i < nbr_j1)
 	{	
@@ -87,27 +88,30 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
 		if(essaie == nbr_j_2)
 		{
 			printf("\n\n+*+*++*+*+*+*+*++*+**+ BINGO *+***+*+*+*+*+*+*+*+++*\n");
+			//res = resultat + nbr_j1;
 		}
 			
 		else if(essaie < nbr_j_2)
 		{
 			printf("PLUS\n");
-			printf("Essaie encore : ");
+			printf("[ %d ] Essaie encore : ",i+1);
+			resultat = resultat - 1;
+
 		}
 
 		else if(essaie > nbr_j_2)
 		{
 			printf("MOINS\n");
-			printf("Essaie encore : ");
+			printf("[ %d ] Essaie encore : \n\n",i+1);
+			resultat = resultat -1;
 		}
 		else
 		{
 			printf("\n DOmmage\n");
 		}
 		i++;
-		essaie++;
 	}
-	printf("res = %d \n",essaie);
+	printf("SCORE FINAL = %d \n",resultat);
 }
 void plus_moins_deux_joueur_2()
 {
