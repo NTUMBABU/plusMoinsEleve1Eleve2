@@ -4,7 +4,9 @@
 
 void plus_moins(int choix_joueur, int valeur_a_touver)
 {
-	int x = 0;
+	int nbr_de_choix = 3;
+	int i = 0;
+
 	do
 	{	
 		printf("Essaie encore : "); scanf("%d",&choix_joueur);
@@ -12,7 +14,7 @@ void plus_moins(int choix_joueur, int valeur_a_touver)
 		{
 			printf("BINGO\n");
 		}
-		
+			
 		else if(choix_joueur < valeur_a_touver)
 		{
 			printf("PLUS\n");
@@ -22,7 +24,11 @@ void plus_moins(int choix_joueur, int valeur_a_touver)
 		{
 			printf("MOINS\n");
 		}
-	}while(choix_joueur != valeur_a_touver);	
+		
+		i++;
+	}while(choix_joueur != valeur_a_touver && i < nbr_de_choix);
+
+	printf("DOmmage\n");	
 }
 
 int main()
