@@ -75,11 +75,11 @@ void main_plus_moins_un_joueur()
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
-void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
+void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1, int resultat1)
 {
 	int i = 0;
-	int resultat = 0;
-	resultat = nbr_j1;
+	//int resultat = 0;
+	resultat1 = nbr_j1;
 
 	while(essaie != nbr_j_2 && i < nbr_j1)
 	{	
@@ -94,8 +94,8 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
 		else if(essaie < nbr_j_2)
 		{
 			printf("PLUS\n");
-			printf("[ %d ] Essaie encore : ",i+1);
-			resultat = resultat - 1;
+			printf("[ %d ] Essaie encore : \n",i+1);
+			resultat1 = resultat1 - 1;
 
 		}
 
@@ -103,7 +103,7 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
 		{
 			printf("MOINS\n");
 			printf("[ %d ] Essaie encore : \n\n",i+1);
-			resultat = resultat -1;
+			resultat1 = resultat1 -1;
 		}
 		else
 		{
@@ -111,14 +111,14 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1)
 		}
 		i++;
 	}
-	printf("SCORE FINAL = %d \n",resultat);
+	printf("SCORE FINAL = %d \n",resultat1);
 }
 ////////////////////////////////////////////////////////////////////////////////////////
-void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2)
+void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2, int resultat2)
 {
 	int i = 0;
-	int resultat = 0;
-	resultat = nbr_j_2;
+	resultat2 = 0;
+	resultat2 = nbr_j_2;
 
 	while(essaie != nbr_j_1 && i < nbr_j_2)
 	{	
@@ -133,7 +133,7 @@ void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2)
 		{
 			printf("PLUS\n");
 			printf("[ %d ] Essaie encore : ",i+1);
-			resultat = resultat - 1;
+			resultat2 = resultat2 - 1;
 
 		}
 
@@ -141,7 +141,7 @@ void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2)
 		{
 			printf("MOINS\n");
 			printf("[ %d ] Essaie encore : \n\n",i+1);
-			resultat = resultat -1;
+			resultat2 = resultat2 -1;
 		}
 		else
 		{
@@ -149,7 +149,7 @@ void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2)
 		}
 		i++;
 	}
-	printf("SCORE FINAL = %d \n",resultat);
+	printf("SCORE FINAL = %d \n",resultat2);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
 void main_plus_moins_deux_joueur()
@@ -158,6 +158,8 @@ void main_plus_moins_deux_joueur()
 	int joueur_2= 0;
 	int tour = 0;
 	int essaie = 0;
+	int res_1 = 0;
+	int res_2 = 0;
 
 	srand(time(NULL));
 	int nbr_min_max = rand()%100;
@@ -172,14 +174,27 @@ void main_plus_moins_deux_joueur()
 	{	
 		printf("JOUEUR 1 placer le nombre des coups minimum maximum pour JOUEUR 2 : "); scanf("%d",&joueur_1);
 		printf("\n");
-		printf("Joueur 2 Deviner le nombre placer entre 0 et 100 en seulement %d essaie: ",joueur_1); plus_moins_deux_joueur_1(essaie, nbr_min_max, joueur_1);
+		printf("Joueur 2 Deviner le nombre placer entre 0 et 100 en seulement %d essaie: ",joueur_1); plus_moins_deux_joueur_1(essaie, nbr_min_max, joueur_1, res_1);
 		
 		printf("\n\n");
 
 		printf("JOUEUR 2 placer le nombre des coups minimum maximum pour JOUEUR 1 : "); scanf("%d",&joueur_2);
 		printf("\n");
-		printf("Joueur 1 Deviner le nombre placer entre 0 et 100 en seulement %d essaie: ",joueur_2); plus_moins_deux_joueur_2(essaie, nbr_min_max, joueur_2);
-		printf("\n");
+		printf("Joueur 1 Deviner le nombre placer entre 0 et 100 en seulement %d essaie: ",joueur_2); plus_moins_deux_joueur_2(essaie, nbr_min_max, joueur_2, res_2);
+		printf("\n\n");
+	}
+
+	if(res_1 == res_2)
+	{
+		printf("Vous etes egalite avec un score de %d et %d \n",res_1, res_2);
+	}
+	else if(res_1 > res_2)
+	{
+		printf("JOUEUR 1 a gagner avec un score de %d contre %d\n",res_1,res_2);
+	}
+	else
+	{
+		printf("JOUEUR 2 a gagner avec un score de %d contre %d\n",res_2,res_1);
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -223,24 +238,3 @@ int main()
 	}
 	return 0;	
 }
-/*switch(niveau)
-	{
-		case 1:
-			niveau_jeux = 100;
-			printf("\n\t vous avez choisi le niveau 1 \n\n");
-			break;
-
-		case 2:
-			niveau_jeux = 25;
-			printf("\n\t vous avez choisi le niveau 2 \n\n");
-			break;
-
-		case 3:
-			niveau_jeux = 10;
-			printf("\n\t vous avez choisi le niveau 3\n\n");
-			break;
-
-		default:
-			printf("\n\t Vous deviez choisir le niveau entre 1 et 3 \n\n");
-			break;
-	}*/
