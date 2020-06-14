@@ -6,43 +6,42 @@ void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 {
 	int i = 0;
 
-	do
+	while(choix_joueur != valeur_a_touver && i < nbr_de_choix)
 	{	
-		printf("Essaie encore : "); scanf("%d",&choix_joueur);
+		scanf("%d",&choix_joueur);
 		if(choix_joueur == valeur_a_touver)
 		{
-			printf("BINGO\n");
+			printf("\n\n+*+*++*+*+*+*+*++*+**+ BINGO *+***+*+*+*+*+*+*+*+++*\n");
 		}
 			
 		else if(choix_joueur < valeur_a_touver)
 		{
 			printf("PLUS\n");
+			printf("Essaie encore : ");
 		}
 
-		else
+		else if(choix_joueur > valeur_a_touver)
 		{
 			printf("MOINS\n");
+			printf("Essaie encore : ");
 		}
-
-		//printf("Essaie encore : "); scanf("%d",&choix_joueur);
+		else
+		{
+			printf("\n DOmmage\n");
+		}
 		i++;
-
-	}while(choix_joueur != valeur_a_touver && i < nbr_de_choix);
-
-	printf("\n DOmmage\n");	
+	}
 }
 
 int main()
 {
-	
-
 	srand(time(NULL));
 	int nbr_secret = rand()%100;
-	int choix;
-	int niveau;
+	int choix = 0;
+	int niveau = 0;
 	int niveau_jeux = 0;
 	
-	printf("============== BIEN VENNUE DANS LE JEUX PLUS MOINS ==============\n\n");
+	printf("\n============== BIEN VENNUE DANS LE JEUX PLUS MOINS ==============\n\n");
 	printf("\t\t CHOISISER LE NIVEAU DE JEUX : \n\n");
 	printf("\t 1. FACILE \n \t 2. MOYEN \n \t 3. DIFFICILE \n\n");
 	printf("INSERER LE NUMERO DU NIVEAU DE JEUX : "); scanf("%d",&niveau);
@@ -50,17 +49,17 @@ int main()
 	switch(niveau)
 	{
 		case 1:
-			niveau_jeux = 2;
+			niveau_jeux = 100;
 			printf("\n\t vous avez choisi le niveau 1 \n\n");
 			break;
 
 		case 2:
-			niveau_jeux = 3;
+			niveau_jeux = 25;
 			printf("\n\t vous avez choisi le niveau 2 \n\n");
 			break;
 
 		case 3:
-			niveau_jeux = 4;
+			niveau_jeux = 10;
 			printf("\n\t vous avez choisi le niveau 3\n\n");
 			break;
 
@@ -70,7 +69,7 @@ int main()
 	}
 
 	//int resultat = 0;
-	printf("deviner un nombre compris entre 0 et 100 : "); plus_moins(choix, nbr_secret, niveau_jeux);
+	printf("Deviner un nombre compris entre 0 et 100 : "); plus_moins(choix, nbr_secret, niveau_jeux);
 	printf("\n");
 	return 0;
 }
