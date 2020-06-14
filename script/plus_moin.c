@@ -36,7 +36,9 @@ int main()
 	srand(time(NULL));
 	int nbr_secret = rand()%100;
 	int choix;
-	char FACILE = "1";
+	char FACILE = "F";
+	char MOYEN = "M";
+	char DIFFICILE = "D"
 	printf("============== BIEN VENNUE DANS LE JEUX PLUS MOINS ==============\n\n");
 	printf("\t\tCHOISISER LE NIVEAU DE JEUX : \n\n");
 	printf("\n");
