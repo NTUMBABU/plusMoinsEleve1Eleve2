@@ -28,7 +28,7 @@ void plus_moins(int choix_joueur, int valeur_a_touver)
 int main()
 {
 	srand(time(NULL));
-	int nbr_secret = rand()%11;
+	int nbr_secret = rand()%100;
 	int choix;
 	//int resultat = 0;
 	printf("deviner un nombre compris entre 0 et 10 : "); plus_moins(choix, nbr_secret);
