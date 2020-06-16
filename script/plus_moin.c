@@ -253,7 +253,8 @@ int main()
 		case 2:
 			break;
 		default:
-			printf("vous deviez choisir 1 ou 2 \n");
+			printf("\n\tvous devriez choisir entre 1 ou 2 \n\n");
+			exit(0);
 			break;
 	}
 
