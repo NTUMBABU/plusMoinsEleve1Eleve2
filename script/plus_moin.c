@@ -5,7 +5,7 @@
 //#include<conio.h>
 //#include<windows.h>
 #include<unistd.h>
-// PRPJET FAIT PAR :
+// PROPJET FAIT PAR :
 //					 NTUMBABU TSHITEYA JOAS
 ///////////////////////////////////////////////////////////////////////////////////
 /////////////// FONCTION DU  MONDE JOUEUR UN /////////////////////////////
@@ -28,7 +28,7 @@ void plus_moins(int choix_joueur, int valeur_a_touver, int nbr_de_choix)
 			printf("[ %d ] Essaie encore : ",i+1);
 		}
 
-		else if(choix_joueur > valeur_a_touver)
+		else //if(choix_joueur > valeur_a_touver)
 		{
 			printf("MOINS\n");
 			printf("[ %d ] Essaie encore : ",i+1);
@@ -51,7 +51,6 @@ void main_plus_moins_un_joueur()
 	int niveau = 0;
 	int niveau_jeux = 0;
 	
-	printf("\t=================================================================\n");
 	printf("\t=================================================================\n");
 	printf("\t=================================================================\n");
 	printf("\t=================================================================\n");
@@ -79,6 +78,7 @@ void main_plus_moins_un_joueur()
 
 		default:
 			printf("\n\t VOUS DEVIEZ CHOISIR LE NIVEAU ENTRE 1 ET 3 \n\n");
+			exit(0);
 			break;
 	}
 	//int resultat = 0;
@@ -107,15 +107,15 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1, int resultat1
 		else if(essaie < nbr_j_2)
 		{
 			printf("PLUS\n");
-			printf("[ %d ] Essaie encore : \n",i+1);
+			printf("[ %d ] Essaie encore : ",i+1);
 			resultat1 = resultat1 - 1;
 
 		}
 
-		else if(essaie > nbr_j_2)
+		else //if(essaie > nbr_j_2)
 		{
 			printf("MOINS\n");
-			printf("[ %d ] Essaie encore : \n\n",i+1);
+			printf("[ %d ] Essaie encore : ",i+1);
 			resultat1 = resultat1 -1;
 		}
 		//else
@@ -124,7 +124,7 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1, int resultat1
 		//}
 		i++;
 	}
-	printf("SCORE FINAL = %d \n",resultat1);
+	printf("\n SCORE FINAL = %d \n",resultat1);
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////fonction de du monde deux joueur joueur 1///////////////////////////
@@ -132,7 +132,7 @@ void plus_moins_deux_joueur_1(int essaie, int nbr_j_2, int nbr_j1, int resultat1
 void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2, int resultat2)
 {
 	int i = 0;
-	resultat2 = 0;
+	//resultat2 = 0;
 	resultat2 = nbr_j_2;
 
 	while(essaie != nbr_j_1 && i < nbr_j_2)
@@ -152,10 +152,10 @@ void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2, int resultat
 
 		}
 
-		else if(essaie > nbr_j_2)
+		else //if(essaie > nbr_j_2)
 		{
 			printf("MOINS\n");
-			printf("[ %d ] Essaie encore : \n\n",i+1);
+			printf("[ %d ] Essaie encore : ",i+1);
 			resultat2 = resultat2 -1;
 		}
 		//else
@@ -164,9 +164,8 @@ void plus_moins_deux_joueur_2(int essaie, int nbr_j_1, int nbr_j_2, int resultat
 		//}
 		i++;
 	}
-	printf("SCORE FINAL = %d \n",resultat2);
+	printf("\n SCORE FINAL = %d \n",resultat2);
 }
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////fonction principale du mode deux joueur/////////////////////////
 
@@ -180,9 +179,6 @@ void main_plus_moins_deux_joueur()
 	int res_2 = 0;
 	char JOUEUR1[10] = " ";
 	char JOUEUR2[10] = " ";
-
-	srand(time(NULL));
-	int nbr_min_max = rand()%100;
 
 	
 	printf("\t=================================================================\n");
@@ -202,15 +198,20 @@ void main_plus_moins_deux_joueur()
 
 	for(int i = 0; i < tour; i++)
 	{	
+		srand(time(NULL));
+		int nbr_min_max = rand()%100;
+		int nbr_min_max2 = rand()%100;
+		printf("\n consigne : LE NOMBRE DES COUPS DOIT ET ETRE MINIMUM SUPERIEUR A 10\n\n");
 		printf(" %s TAPEZ UN NOMBRE DES COUPS MINIMUM MAXIMUM POUR %s : ",JOUEUR1, JOUEUR2); scanf("%d",&joueur_1);
 		printf("\n");
 		printf(" %s TROUVEZ LE NOMBRE MYSTERE PLACER ENTRE 0 ET 100 EN SEULEMENT %d ESSAIE : ",JOUEUR2, joueur_1); plus_moins_deux_joueur_1(essaie, nbr_min_max, joueur_1, res_1);
-		
+			
 		printf("\n\n");
-
+///////////////////////////////////////////////////////////////////
+		printf("\n consigne : LE NOMBRE DES COUPS DOIT ET ETRE MINIMUM SUPERIEUR A 10\n\n");
 		printf(" %s TAPEZ LE NOMBRE DES COUPS MINIMUM MAXIMUM POUR %s : ",JOUEUR2, JOUEUR1); scanf("%d",&joueur_2);
 		printf("\n");
-		printf(" %s TROUVEZ LE NOMBRE MYSTERE PLACER ENTRE 0 ET 100 EN SEULEMENT %d ESSSAIE : ",JOUEUR1 ,joueur_2); plus_moins_deux_joueur_2(essaie, nbr_min_max, joueur_2, res_2);
+		printf(" %s TROUVEZ LE NOMBRE MYSTERE PLACER ENTRE 0 ET 100 EN SEULEMENT %d ESSSAIE : ",JOUEUR1 ,joueur_2); plus_moins_deux_joueur_2(essaie, nbr_min_max2, joueur_2, res_2);
 		printf("\n\n");
 	}
 
@@ -244,7 +245,6 @@ int main()
 	printf("\t==                                                             ==\n");
 	printf("\t==                                                             ==\n");
 	printf("\t========================= ");scanf("%d",&choix_mode);
-
 	switch(choix_mode)
 	{
 		case 1:
